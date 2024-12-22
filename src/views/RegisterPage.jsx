@@ -1,6 +1,4 @@
-import React from 'react';
 import Auth from '../components/auth';
-
 function RegisterPage() {
   return (
     <div className="w-full ">
