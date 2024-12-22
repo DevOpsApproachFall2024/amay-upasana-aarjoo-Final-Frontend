@@ -1,4 +1,4 @@
-import Auth from '../components/auth';
+import Auth from 'src/components/Auth';
 
 function LoginPage() {
   return (
