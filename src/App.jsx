@@ -6,6 +6,8 @@ import HomePage from 'src/views/HomePage';
 import CategoryPage from './views/CategoryPage';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import QuestionPage from 'src/views/QuestionPage';
+
 function App() {
   return (
     <AuthProvider>
@@ -19,6 +21,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <CategoryPage />
+              </ProtectedRoute>
+            }
+          />
+                    <Route
+            path="/quiz/:id"
+            element={
+              <ProtectedRoute>
+                <QuestionPage />
               </ProtectedRoute>
             }
           />
