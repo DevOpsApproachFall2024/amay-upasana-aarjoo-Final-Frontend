@@ -7,6 +7,7 @@ import CategoryPage from './views/CategoryPage';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import QuestionPage from 'src/views/QuestionPage';
+import Tony from './views/Tony';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/tony" element={<Tony />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route
