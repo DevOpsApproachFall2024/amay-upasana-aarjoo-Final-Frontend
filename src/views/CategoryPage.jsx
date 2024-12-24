@@ -1,52 +1,46 @@
-// CategoryPage.jsx
-
 import Category from 'src/components/Category';
 import Navbar from 'src/components/Navbar';
 
 const categories = [
-  { id: 1, name: 'GENERAL KNOWLEDGE' },
-  { id: 2, name: 'ENTERTAINMENT' },
-  { id: 3, name: 'SCIENCE' },
-  { id: 4, name: 'GEOGRAPHY' },
-  { id: 5, name: 'HISTORY' },
-  { id: 6, name: 'POLITICS' },
-  { id: 7, name: 'MYTHOLOGY' },
-  { id: 8, name: 'ART & LITERATURE' },
+  { id: 1, name: 'ART', pic: '/art.png' },
+  { id: 2, name: 'SCIENCE & NATURE', pic: '/science.png' },
+  { id: 3, name: 'GENERAL KNOWLEDGE', pic: '/gk.png' },
+  { id: 4, name: 'SPORTS', pic: '/sports.png' },
 ];
 
 const CategoryPage = () => {
   return (
-    <div className="p-6">
+    <div className="bg-gray-50 min-h-screen">
       <Navbar />
-      <div className="px-20">
-        <div className="mt-12">
-          {/* a long arrow */}
-          <div className="flex items-center mt-4">
-            <div className="w-16 h-16 bg-green-400 rounded-full flex justify-center items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </svg>
-            </div>
-            <p className="ml-4 text-gray-800">
-              <h1 className="text-xl font-semibold  text-gray-800">
-                Start Quiz
-              </h1>
-            </p>
+      <div className="px-8 lg:px-20 py-8">
+        {/* Header Section */}
+        <div className="flex items-center mt-8">
+          <div className="w-16 h-16 bg-green-500 rounded-full flex justify-center items-center shadow-md">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
           </div>
+          <h1 className="ml-4 text-2xl font-bold text-gray-800">Start Quiz</h1>
         </div>
-        <div className="grid grid-cols-3 gap-9 mt-12">
+
+        {/* Categories Grid */}
+        <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-28">
           {categories.map((category) => (
-            <Category key={category.id} name={category.name} />
+            <Category
+              key={category.id}
+              name={category.name}
+              picture={category.pic}
+            />
           ))}
         </div>
       </div>
