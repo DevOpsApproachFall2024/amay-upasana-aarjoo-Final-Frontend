@@ -1,14 +1,40 @@
 import Category from 'src/components/Category';
 import Navbar from 'src/components/Navbar';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-const categories = [
-  { id: 1, name: 'ART', pic: '/art.png' },
-  { id: 2, name: 'SCIENCE & NATURE', pic: '/science.png' },
-  { id: 3, name: 'GENERAL KNOWLEDGE', pic: '/gk.png' },
-  { id: 4, name: 'SPORTS', pic: '/sports.png' },
-];
+
 
 const CategoryPage = () => {
+  const [categories, setCategories] = useState([]);
+  // axios call to get categories
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/api/quiz/', {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        // Extract categories and ID from the response
+        if (res.data) {
+          const data = res.data; // Assuming the data structure you shared
+          const extractedCategories = data.map((question) => ({
+            category: question.questions[0].category,
+            id: question._id,
+          }));
+          setCategories(extractedCategories);
+        }
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+  console.log(categories);
   return (
     <div className="bg-gray-50 min-h-screen">
       <Navbar />
@@ -38,8 +64,9 @@ const CategoryPage = () => {
           {categories.map((category) => (
             <Category
               key={category.id}
-              name={category.name}
-              picture={category.pic}
+              name={category.category}
+              picture={`${category.category}.png`}
+              id={category.id}
             />
           ))}
         </div>
