@@ -1,9 +1,8 @@
+import React from 'react';
 import Category from 'src/components/Category';
 import Navbar from 'src/components/Navbar';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-
-
 
 const CategoryPage = () => {
   const [categories, setCategories] = useState([]);
